@@ -101,6 +101,7 @@ function dispearWinAfter05Seconds() {
     return new Promise(resolve => {
         setTimeout(() => {
             resolve(
+                
                 checked[0].classList.add('win'),
                 checked[1].classList.add('win'),
                 checked[0].classList.replace('checked', 'num'),
@@ -114,14 +115,14 @@ function dispearWinAfter05Seconds() {
 async function asyncCall1() {
 
     const result = await dispearWinAfter05Seconds();
-    console.log(result);
-    // expected output: "resolved"
+    
 }
 
 function dispearNumberAfter05Seconds() {
     return new Promise(resolve => {
         setTimeout(() => {
             resolve(
+                
                 checked[0].classList.replace('checked', 'num'),
                 checked[1].classList.replace('checked', 'num'));
                 
@@ -132,23 +133,23 @@ function dispearNumberAfter05Seconds() {
 async function asyncCall2() {
 
     const result = await dispearNumberAfter05Seconds();
-    console.log(result);
-    // expected output: "resolved"
+   
 }
 
 
 let startBool;
 let startTimer;
 let finishGame = 0;
-
+var firstCard = document.querySelector('#num')
 
 var start =document.querySelector('#start');
 start.addEventListener('click',function(){
     start.style.display='none';
         parent.addEventListener('click', parentOnClick)
         startTimer = setInterval(timer, 1000);
+    firstCard.style.display = 'none';
+    table.style.display = 'block';
     
-    num.forEach(element => {element.style.margin= '10px 0px 0px 10px';})
      startBool =true;
      
      randomize(tab)
@@ -184,26 +185,28 @@ for (let i = 0; i < 18; i++) {
         if (array.length < 2 && startBool ===true) {
 
             num[i].classList.replace('num', 'checked')
-            console.log(num[i])
+           
             num[i].key = i;
             checked = document.querySelectorAll('.checked')
             if (num[i] !== array[0] && num[i] !== array[1]) {
                 array.push(num[i])
+               
             }
 
-            console.log(array)
+          
 
 
 
             if (array[0].value === array[1].value) {
-                
+               
                 finishGame += 1;
-                console.log(finishGame)
+                
                 
                 asyncCall1();
                 
                 if(finishGame === 9){
                     end.style.display='block';
+                    firstCard.style.display = 'block';
                     table.style.display ='none';
                     clearInterval(startTimer)
                     parentOnClick()
@@ -213,7 +216,7 @@ for (let i = 0; i < 18; i++) {
 
                     }
             } else {
-                console.log(checked[1])
+                
                 
 
                 asyncCall2()
@@ -233,7 +236,7 @@ for (let i = 0; i < 18; i++) {
 
 }
 
-var end= document.querySelector("#twin-end-wrapper")
+var end= document.querySelector("#end")
 var table = document.querySelector('.table-twin')
 var btnReset = document.querySelector('#btn-reset').addEventListener('click',function reset(){
     seconds=0;
@@ -242,11 +245,13 @@ var btnReset = document.querySelector('#btn-reset').addEventListener('click',fun
 
     time.innerHTML = zero(hours) + ':' + zero(minutes) + ':' + zero(seconds);
     start.style.display='inline-block';
-    table.style.display ='block';
+    
+    firstCard.style.display = 'none';
+    
    num.forEach(element=> element.classList.remove('win'))
    
-   table.style.height ='60vh';
-    num.forEach(element => {element.style.marginRight= '0px';})
+   
+    
     parentCount.innerHTML = 0;
     end.style.display ='none';
     parentClick = 0;
