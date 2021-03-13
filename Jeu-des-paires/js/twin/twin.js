@@ -113,12 +113,13 @@ function dispearWinAfter05Seconds() {
     });
 }
 async function asyncCall1() {
-
+//fait disparaitre les cartes de paires trouver
     const result = await dispearWinAfter05Seconds();
     
 }
 
 function dispearNumberAfter05Seconds() {
+    //fait disparaitre les cartes de paires non trouver
     return new Promise(resolve => {
         setTimeout(() => {
             resolve(

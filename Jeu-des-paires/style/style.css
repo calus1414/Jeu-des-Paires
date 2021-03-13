@@ -30,7 +30,7 @@ header h1{
     grid-column-start:3;
    grid-column: span 6;
 box-shadow: 8px 8px 5px rgb(50, 51, 50) ;
-  
+  background-color: rgb(13, 77, 13);
 }
 table{
     display: none;
